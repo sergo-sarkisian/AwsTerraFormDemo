@@ -26,13 +26,7 @@ resource "aws_subnet" "subnet1"{
     "Type" = "Public subnet"
   }
 } 
-  tags = {
-    Name = "Subnet1"
- } 
-}
+
  
-  tags {
-    Name = "demoinstance"
-  }
-}
+
 
