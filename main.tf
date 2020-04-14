@@ -31,4 +31,8 @@ resource "aws_subnet" "subnet1"{
  } 
 }
  
+  tags {
+    Name = "demoinstance"
+  }
+}
 
