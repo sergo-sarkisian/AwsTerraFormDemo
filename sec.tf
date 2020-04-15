@@ -1,5 +1,5 @@
-resource "aws_security_group" "sec_group" {
-  name = "sec_group"
+resource "aws_security_group" "sec_group_ssh" {
+  name = "sec_group_ssh"
   vpc_id = "${aws_vpc.main.id}" 
 ingress {
       from_port   = 22
