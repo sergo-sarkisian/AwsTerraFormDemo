@@ -1,0 +1,9 @@
+---
+###/etc/ansible/playbooks/playbook.yaml
+- hosts: webservers
+  roles:
+        - webserver
+- hosts: dbservers
+  roles:
+        - dbbserver
+  
