@@ -16,3 +16,5 @@
   
   2.`ansible-playbook playbook.yaml`
   
+  The only minor things left to automate is automatic generation of key pairs without AWS console and getting output of public IPs from Terraform into Ansible hosts file.
+  
