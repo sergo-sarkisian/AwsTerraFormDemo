@@ -5,3 +5,7 @@
  Software installation and configuration will be done using Ansible .
 
  Infra is provisioned with AWS IAM user having Admin privileges. 
+ 
+ To provision AWS instances , VPC , subnets and SEC groups run : 
+ 
+ `terraform apply`
