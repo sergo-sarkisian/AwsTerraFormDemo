@@ -1,0 +1,66 @@
+# tasks file for dbserver
+---
+- name: Set MySQL root to make non-interactive
+  debconf: name="mysql-server" question="mysql-server/root_password" value="" vtype="password"
+- name: Confirm MySQL root password before installing
+  debconf: name="mysql-server" question="mysql-server/root_password_again" value="" vtype="password"
+- name: Install Mysql server
+  apt:
+    package:
+        - mysql-server
+        - mysql-client
+        - python-mysqldb
+        - mysql-common
+    state: present
+    force: yes
+    update_cache: yes
+    cache_valid_time: 360
+  
+     
+- name: ensure MySQL always starts
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+- name: delete anonymous MySQL server user for localhost
+  action: mysql_user user="" state="absent"
+ 
+- name: remove the MySQL test database
+  action: mysql_db db=test state=absent
+   
+   
+# http://ansible.cc/docs/modules.html#mysql-user   
+- name: Change root user password on first run
+  mysql_user: login_user=root
+              login_password=''
+              name=root
+              password={{mysql_root_password}}
+              priv=*.*:ALL,GRANT
+              host={{ item }}
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+
+- name: Create a  WordPress database
+  mysql_db:
+    name: "{{wp_db_name}}"
+    state: present
+- name: Create Mysql username and password
+  mysql_user:
+        login_user=root
+        login_password={{mysql_root_password}}
+        name={{wp_db_username}}
+        password={{wp_db_password}}
+        host={{ remote_host_ip }}
+        priv='{{wp_db_name}}.*:ALL'
+- name: Change mysql conf to listen on all interfaces
+  lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf regexp="^bind-address" line="bind-address=0.0.0.0"
+  notify:
+        - restart mysql         
+
+- name: Restart Mysql
+  service:
+    name: mysql
+    state: restarted
+

@@ -1,0 +1,11 @@
+---
+# defaults file for wordpressinstall
+wp_db_name: 'wpdatabase'
+wp_db_username: 'wordpress'
+wp_db_password: "wordpresspass"
+wp_db_host: '10.10.0.101'
+wp_table_prefix: 'wpzc'
+wp_debug_mode: 'FALSE'
+remote_host_ip: 'WEBNODEIP_TO_CONNECT_FROM_TO_MYSQL'
+wordpress_host_dir: '/var/www'
+wordpress_dir: '/var/www/wordpress'

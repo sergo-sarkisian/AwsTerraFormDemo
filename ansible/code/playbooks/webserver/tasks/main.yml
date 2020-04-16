@@ -1,0 +1,28 @@
+---
+# tasks file for webserver
+#tasks:
+- name: install PHP
+  apt: name={{item}} state=present
+ #   update_cache: yes
+  with_items:
+    - apache2
+    - libapache2-mod-php
+    - php
+    - php-mcrypt
+    - php-mysql
+    - php-common
+    - php-mysql
+    - php-tidy
+    - php-xml
+    - php-xmlrpc
+    - php-mbstring
+    - php-memcached
+    - php-curl
+    - php-zip
+   # update_cache:  yes
+  #  cache_valid_time:  360
+- name: Set up Apache virtuahHost
+  template:
+    src: "files/apache.conf.j2"
+    dest: "/etc/apache2/sites-available/000-default.conf"
+

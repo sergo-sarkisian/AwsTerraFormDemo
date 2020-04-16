@@ -1,0 +1,5 @@
+---
+# defaults file for webserver
+apache_port : "80"
+http_host_dir : "wordpress"
+

@@ -1,0 +1,11 @@
+---
+- hosts: dbserver
+  become : yes
+  roles:
+        - dbserver
+- hosts: webserver
+  become : yes
+  roles:
+        - webserver
+        - wordpressinstall
+

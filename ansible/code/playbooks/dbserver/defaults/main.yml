@@ -1,0 +1,9 @@
+---
+# defaults file for dbserver
+mysql_root_password : 'mysqlrootpass'
+wp_db_name: 'wpdatabase'
+wp_db_username: 'wordpress'
+wp_db_password: "wordpresspass"
+wp_db_host: '10.10.0.101'
+remote_host_ip: '10.10.0.102'
+

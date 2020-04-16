@@ -1,0 +1,20 @@
+---
+# tasks file for wordpressinstall
+- name: Create required dirs
+  file: path={{wordpress_dir}} state=directory
+- name: Download WordPress
+  get_url: url=https://www.wordpress.org/latest.tar.gz dest=/tmp/wordpress.tar.gz validate_certs=no
+
+- name: Extract WordPress
+  command: "tar xzf /tmp/wordpress.tar.gz -C {{wordpress_dir}} --strip-components 1"
+- name: Copy WordPress config file
+  template: src=wp-config.php dest={{wordpress_dir}}
+- name: Chown  ownership in wp hosted directory
+  file: path={{wordpress_host_dir}} owner=www-data group=www-data  state=directory recurse=yes 
+ 
+- name: Chown ownership of wp-content directory
+  file: path={{wordpress_dir}}/wp-content/ owner=www-data group=www-data mode=755 state=directory recurse=yes
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
