@@ -13,5 +13,6 @@
  To provision software on instances run the playbook :
  
   1.`ansible-playbook initialize.yaml`
+  
   2.`ansible-playbook playbook.yaml`
   
