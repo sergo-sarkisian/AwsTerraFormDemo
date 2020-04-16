@@ -12,6 +12,7 @@
  The only prerequisite is to have keypairs generated and IAM user created from WEB interface, rest of the setup in AWS is automated.
  To provision software on instances run the playbook :
  
-  -`ansible-playbook initialize.yaml`
-  -`ansible-playbook playbook.yaml`
+  1.`ansible-playbook initialize.yaml`
+  
+  2. ansible-playbook playbook.yaml`
   
