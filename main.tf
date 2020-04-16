@@ -7,6 +7,8 @@ resource "aws_instance" "web" {
   ami = "ami-017ad30b324faed9b"
   instance_type = "t3.micro"
   subnet_id = "${aws_subnet.subnet1.id}"
+  key_name = "webkeypairs"
+  private_ip = "${var.webnodeprivip}"
   vpc_security_group_ids = [ aws_security_group.sec_group_ssh.id , aws_security_group.sec_group_https.id , aws_security_group.sec_group_http.id ] 
   tags = {
     Name = "demoinstanceweb"
@@ -15,6 +17,8 @@ resource "aws_instance" "web" {
 resource "aws_instance" "db" {
   ami = "ami-017ad30b324faed9b"
   instance_type = "t3.micro"
+  key_name = "dbkeypairs"
+  private_ip = "${var.dbprivip}"
   subnet_id = "${aws_subnet.subnet1.id}"
   vpc_security_group_ids = [ aws_security_group.sec_group_ssh.id , aws_security_group.sec_group_mysql.id ]
   tags = {
