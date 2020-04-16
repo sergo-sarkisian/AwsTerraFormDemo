@@ -9,3 +9,9 @@
  To provision AWS instances , VPC , subnets and SEC groups run : 
  
  `terraform apply`
+ The only prerequisite is to have keypairs generated and IAM user created from WEB interface, rest of the setup in AWS is automated.
+ To provision software on instances run the playbook :
+ 
+  -`ansible-playbook initialize.yaml`
+  -`ansible-playbook playbook.yaml`
+  
