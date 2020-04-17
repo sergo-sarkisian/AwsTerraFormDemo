@@ -1,5 +1,5 @@
 [webserver]
-public_IP_WEB_EC2 ansible_ssh_user=ubuntu  ansible_ssh_private_key_file=/home/sergio/webkeypairs.pem
+public_IP_WEB_EC2 ansible_ssh_user=ubuntu  ansible_ssh_private_key_file=path_to_priv_key.pem
 [dbserver]
-public_IP_DB_EC2  ansible_ssh_user=ubuntu  ansible_ssh_private_key_file=/home/sergio/dbkeypairs.pem
+public_IP_DB_EC2  ansible_ssh_user=ubuntu  ansible_ssh_private_key_file=path_to_priv_key.pem
 
