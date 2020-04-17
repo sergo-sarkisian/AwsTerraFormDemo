@@ -2,7 +2,7 @@ variable "region" {
   default = "eu-north-1"
 }
 variable "creds_file" {
-  default = "/home/sergio/.aws/credentials"
+  default = "path to creds_file"
 }
 
 variable "profile" {
